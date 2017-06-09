@@ -1,7 +1,7 @@
+from static.partial import _, _1
+from static.pg import db_config
 from sanic import Sanic
 from sanic import response
-from partial import _, __, ___, _1
-from pg import db_config
 
 app = Sanic(__name__)
 
