@@ -299,9 +299,7 @@
   };
 
   _.if = _.If = function(predicate, fn) {
-//    console.log(arguments)
     var store = [fn ? [predicate, fn] : [_.identity, predicate]];
-    console.log(store)
     return _.extend(If, {
       else_if: elseIf,
       elseIf: elseIf,
