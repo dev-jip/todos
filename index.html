@@ -110,6 +110,7 @@
 <script>
 
   function enter_n_has_val(e) {
+
     return e.keyCode == 13 && e.target.value;
   }
 
@@ -171,13 +172,15 @@
       append_items(app.list);
       draw_count();
 
+      var throttled = _.throttle(__(
+        _.v('target'),
+        _.tap(add_todo, _.if(_(filter_is_not, 'completed'), append_items)),
+        _.set('value', ''),
+        draw_count), 300, {trailing: false})
+
       $('body')
         .on('keyup', '.create',
-          _.if(enter_n_has_val, __(
-            _.v('target'),
-            _.tap(add_todo, _.if(_(filter_is_not, 'completed'), append_items)),
-            _.set('value', ''),
-            draw_count)))
+          _.if(enter_n_has_val, throttled))
 
         .on('click', '.remove', __(
           e_to_todo_item,

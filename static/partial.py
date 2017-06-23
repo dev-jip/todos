@@ -1040,7 +1040,6 @@ _.spread = __spread
 def _1(arg):
     return lambda v, *i : arg(v)
 
-
 # Async Series
 def __asy(): pass
 _.asy = __asy
